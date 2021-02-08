@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Request\CategoryRequest;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -16,5 +16,8 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.categories.form', $this->data);
+    }
+    public function store(CategoryRequest $request)
+    {
     }
 }
