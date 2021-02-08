@@ -13,8 +13,39 @@
   </ul>
 </div>
 <div class="row">
-
+    <div class="col-md-12">
+        <div class="tile">
+          <div class="tile-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Slug</th>
+                            <th>Parent</th>
+                            <th>Action</th>
+                            <th>Salary</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
 </div>
 
 
 @stop
+@push('bottom')
+
+@endpush
