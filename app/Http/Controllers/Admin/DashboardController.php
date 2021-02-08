@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        echo 'dashboard';
-        exit;
+        return view('admin.dashboard.index');
     }
 }
