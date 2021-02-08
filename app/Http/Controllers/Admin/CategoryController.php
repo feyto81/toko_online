@@ -15,6 +15,6 @@ class CategoryController extends Controller
     }
     public function create()
     {
-        return view('admin.categories.form');
+        return view('admin.categories.form', $this->data);
     }
 }

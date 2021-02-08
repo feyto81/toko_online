@@ -2,9 +2,12 @@
 @section('title','Add Categories')
 
 @section('content')
+@php
+    $formtitle = !empty($category) ? 'update' : 'New'   
+@endphp
 <div class="app-title">
   <div>
-    <h1><i class="fa fa-dashboard"></i> Add Categories</h1>
+    <h1><i class="fa fa-dashboard"></i> {{$formtitle}} Categories</h1>
     <p>A free and open source Bootstrap 4 admin template</p>
   </div>
   <ul class="app-breadcrumb breadcrumb">
@@ -14,7 +17,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-    <a href="{{url('admin/categories')}}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>Back</a>
+    <a href="{{url('admin/categories')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
         <br>
         <br>
         
@@ -22,7 +25,7 @@
 </div>
 
 
-@stop
+@endsection
 @push('bottom')
 
 @endpush
