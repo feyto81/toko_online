@@ -25,17 +25,22 @@
                             <th>Slug</th>
                             <th>Parent</th>
                             <th>Action</th>
-                            <th>Salary</th>
+                           
                           </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                        </tr>
+                        @forelse($categories as $category)
+                            <tr>
+                                <td>{{$category->id}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->slug}}</td>
+                                <td>{{$category->parent_id}}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5">No record found</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
