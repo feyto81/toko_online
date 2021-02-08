@@ -13,4 +13,8 @@ class CategoryController extends Controller
         $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(10);
         return view('admin.categories.index', $this->data);
     }
+    public function create()
+    {
+        return view('admin.categories.form');
+    }
 }
