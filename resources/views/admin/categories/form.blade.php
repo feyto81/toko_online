@@ -3,7 +3,7 @@
 
 @section('content')
 @php
-    $formtitle = !empty($category) ? 'update' : 'Add'   
+    $formtitle = !empty($category) ? 'Update' : 'Add'   
 @endphp
 <div class="app-title">
   <div>
@@ -34,6 +34,12 @@
               <div class="form-group">
                 {!! Form::label('name','Name') !!}
                 {!! Form::text('name', null, ['class' => 'form-control','placeholder' => 'category name']) !!}
+              </div>
+              <div class="form-group">
+                {{-- {!! Form::label('parent_id','Parent') !!}
+                {!! General::selectMultiLevel('parent_id', $categories, ['class' => 'form-control','selected' => !empty(old('parent_id')) ? old('parent_id') : !empty($category['parent_id']) ? $category['parent_id'] : '','placeholder' => '-- Chose Category --']) !!} --}}
+                {!! Form::label('parent_id','Parent') !!}
+                {!! General::selectMultiLevel('parent_id', $categories, ['class' => 'form-control','selected' => !empty(old('parent_id')) ? old('parent_id') :  !empty($category['parent_id']) ? $category['parent_id'] : '', 'placeholder' => '-- Chose Category --']) !!}
               </div>
             </div>
             <div class="tile-footer">
