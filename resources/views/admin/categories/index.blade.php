@@ -17,6 +17,7 @@
     <a href="{{url('admin/categories/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Category</a>
         <br>
         <br>
+        @include('admin.partials.flash', ['$errors' => $errors])
         <div class="tile">
           <div class="tile-body">
             <div class="table-responsive">
@@ -38,6 +39,13 @@
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->slug}}</td>
                                 <td>{{$category->parent_id}}</td>
+                                <td>
+                                  <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
+                                  {!! Form::open(['url' => 'admin/categories/'.$category->id, 'class' => 'delete','display:inline-block']) !!}
+                                  {!! Form::hidden('_method','DELETE') !!}
+                                  {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
+                                  {!! Form::close() !!}
+                                </td>
                             </tr>
                         @empty
                             <tr>

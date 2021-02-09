@@ -20,6 +20,8 @@
     <a href="{{url('admin/categories')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
         <br>
         <br>
+        @include('admin.partials.flash', ['$errors' => $errors])
+        
         <div class="tile">
             
             <div class="tile-body">
