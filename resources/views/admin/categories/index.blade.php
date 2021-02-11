@@ -21,7 +21,7 @@
         <div class="tile">
           <div class="tile-body">
             <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <table class="table table-hover table-bordered" id="">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -56,6 +56,7 @@
                 </table>
             </div>
           </div>
+          {{$categories->links()}}
         </div>
     </div>
 </div>

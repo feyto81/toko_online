@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(10);
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(3);
         return view('admin.categories.index', $this->data);
     }
     public function create()
@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $this->data['category'] = null;
         return view('admin.categories.form', $this->data);
     }
-    
+
     public function store(CategoryRequest $request)
     {
         $params = $request->except('_token');
