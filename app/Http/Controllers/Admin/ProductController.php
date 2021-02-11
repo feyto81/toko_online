@@ -91,4 +91,15 @@ class ProductController extends Controller
 
         return redirect('admin/products');
     }
+
+    public function destroy($id)
+    {
+        $product  = Product::findOrFail($id);
+
+        if ($product->delete()) {
+            Session::flash('success', 'Product has been deleted');
+        }
+
+        return redirect('admin/products');
+    }
 }
