@@ -16,7 +16,7 @@
   </ul>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
     <a href="{{url('admin/products')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
         <br>
         <br>
