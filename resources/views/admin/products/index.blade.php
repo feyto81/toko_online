@@ -14,7 +14,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-    <a href="{{url('admin/products/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Category</a>
+    <a href="{{url('admin/products/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Product</a>
         <br>
         <br>
         @include('admin.partials.flash', ['$errors' => $errors])

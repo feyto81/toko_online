@@ -28,4 +28,8 @@ class ProductController extends Controller
         // dd($this->data);
         return view('admin.products.form', $this->data);
     }
+
+    public function store(Request $request)
+    {
+    }
 }
