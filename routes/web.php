@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::resource('categories', 'CategoryController');
 });
