@@ -9,6 +9,10 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['statuses'] = Product::statuses();
+    }
     public function index()
     {
         $this->data['products'] = Product::orderBy('name', 'ASC')->paginate(10);
@@ -20,6 +24,7 @@ class ProductController extends Controller
         $categories = Category::orderBy('name', 'ASC')->get();
         $this->data['categories'] = $categories->toArray();
         $this->data['product'] = null;
+        $this->data['categoryIDs'] = null;
         // dd($this->data);
         return view('admin.products.form', $this->data);
     }

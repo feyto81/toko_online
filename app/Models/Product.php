@@ -31,7 +31,7 @@ class Product extends Model
         return $this->belongsToMany('App\Models\Category', 'product_categories');
     }
 
-    public function statuses()
+    public static function statuses()
     {
         return [
             0 => 'draft',
