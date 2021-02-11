@@ -22,6 +22,7 @@ class CategoryController extends Controller
         $this->data['category'] = null;
         return view('admin.categories.form', $this->data);
     }
+    
     public function store(CategoryRequest $request)
     {
         $params = $request->except('_token');
