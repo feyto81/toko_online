@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,20 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PUT') {
+            $sku = 'required|unique:products,sku,' . $this->get('id');
+            $name = 'required|unique:products,name,' . $this->get('id');
+        } else {
+            $sku = 'required|unique:products,sku';
+            $name = 'required|unique:products,name';
+        }
+
         return [
-            //
+            'sku' => $sku,
+            'name' => $name,
+            'weight' => 'required|numeric',
+            'price' => 'required|numeric',
+            'status' => 'required',
         ];
     }
 }
