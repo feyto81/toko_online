@@ -55,4 +55,40 @@ class ProductController extends Controller
 
         return redirect('admin/products');
     }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::orderBy('name', 'ASC')->get();
+
+        $this->data['categories'] = $categories->toArray();
+        $this->data['product'] = $product;
+        $this->data['categoryIDs'] = $product->categories->pluck('id')->toArray();
+
+        return view('admin.products.form', $this->data);
+    }
+
+    public function update(ProductRequest $request, $id)
+    {
+        $params = $request->except('_token');
+        $params['slug'] = Str::slug($params['name']);
+
+        $product = Product::findOrFail($id);
+
+        $saved = false;
+        $saved = DB::transaction(function () use ($product, $params) {
+            $product->update($params);
+            $product->categories()->sync($params['category_ids']);
+
+            return true;
+        });
+
+        if ($saved) {
+            Session::flash('success', 'Product has been saved');
+        } else {
+            Session::flash('error', 'Product could not be saved');
+        }
+
+        return redirect('admin/products');
+    }
 }
