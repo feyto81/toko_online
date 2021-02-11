@@ -16,8 +16,21 @@
   </ul>
 </div>
 <div class="row">
+    <div class="col-md-4">
+      <a href="{{url('admin/products')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
+      <br>
+      <br>
+      <div class="tile">
+        <h5 class="tile-title">Products Menu</h5>
+        <div class="tile-body">
+          <nav class="nav flex-column">
+            <a class="nav-link" href="">Product Detail</a>
+            <a class="nav-link" href="">Product Detail</a>
+          </nav>
+        </div>
+      </div>
+    </div>
     <div class="col-md-8">
-    <a href="{{url('admin/products')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
         <br>
         <br>
         @include('admin.partials.flash', ['$errors' => $errors])
