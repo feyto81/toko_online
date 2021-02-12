@@ -126,5 +126,8 @@ class ProductController extends Controller
         }
 
         $product = Product::findOrFail($id);
+        $this->data['productID'] = $product->id;
+        $this->data['product'] = $product;
+        return view('admin.products.image_form', $this->data);
     }
 }

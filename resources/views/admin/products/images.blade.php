@@ -53,6 +53,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                <a href="{{ url('admin/products/'.$productID.'/add-image') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add New</a>
             </div>
           </div>
           
