@@ -30,7 +30,6 @@ class ProductController extends Controller
         $categories = Category::orderBy('name', 'ASC')->get();
         $this->data['categories'] = $categories->toArray();
         $this->data['product'] = null;
-        // $this->data['categoryIDs'] = null;
         $this->data['productID'] = 0;
         $this->data['categoryIDs'] = [];
         // dd($this->data);
