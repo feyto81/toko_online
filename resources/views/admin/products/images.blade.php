@@ -40,7 +40,7 @@
                                 <td><img src="{{asset('storage/'.$image->path)}}" style="width: 150px"></td>
                                 <td>{{$image->created_at}}</td>
                                 <td>
-                                  {!! Form::open(['url' => 'admin/products/'.$image->id, 'class' => 'delete','display:inline-block']) !!}
+                                  {!! Form::open(['url' => 'admin/products/images/'.$image->id, 'class' => 'delete','display:inline-block']) !!}
                                   {!! Form::hidden('_method','DELETE') !!}
                                   {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
                                   {!! Form::close() !!}
