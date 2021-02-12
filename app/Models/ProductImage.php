@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductImage extends Model
 {
+    // public const UPLOAD_DIR = 'uploads';
+
     protected $fillable = [
         'product_id',
         'path',

@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Requests\ProductImageRequest;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductImage;
 use Str;
 use Auth;
 use DB;
@@ -141,19 +142,18 @@ class ProductController extends Controller
             $name = $product->slug . '_' . time();
             $fileName = $name . '.' . $image->getClientOriginalExtension();
 
-            $folder = ProductImage::UPLOAD_DIR . '/images';
+            $folder = '/uploads/images';
 
-            $filePath = $image->storeAs($folder . '/original', $fileName, 'public');
+            $filePath = $image->storeAs($folder, $fileName, 'public');
 
-            $resizedImage = $this->_resizeImage($image, $fileName, $folder);
 
-            $params = array_merge(
-                [
-                    'product_id' => $product->id,
-                    'path' => $filePath,
-                ],
-                $resizedImage
-            );
+
+            $params = [
+                'product_id' => $product->id,
+                'path' => $filePath,
+            ];
+
+
 
             if (ProductImage::create($params)) {
                 Session::flash('success', 'Image has been uploaded');
