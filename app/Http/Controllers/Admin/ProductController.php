@@ -58,11 +58,15 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        if (empty($id)) {
+            return redirect('admin/products/create');
+        }
         $product = Product::findOrFail($id);
         $categories = Category::orderBy('name', 'ASC')->get();
 
         $this->data['categories'] = $categories->toArray();
         $this->data['product'] = $product;
+        $this->data['productID'] = $product->id;
         $this->data['categoryIDs'] = $product->categories->pluck('id')->toArray();
 
         return view('admin.products.form', $this->data);
@@ -101,5 +105,17 @@ class ProductController extends Controller
         }
 
         return redirect('admin/products');
+    }
+
+    public function images($id)
+    {
+        if (empty($id)) {
+            return redirect('admin/products/create');
+        }
+
+        $product = Product::findOrFail($id);
+        $this->data['productID'] = $product->id;
+        $this->data['productImages'] = $product->productImages;
+        return view('admin.products.images', $this->data);
     }
 }

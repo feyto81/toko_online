@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title','Add Product')
+@section('title','Product')
 
 @section('content')
 @php
@@ -17,22 +17,11 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-      <a href="{{url('admin/products')}}" class="btn btn-sm btn-info"><i class="fa fa-long-arrow-left "></i></a>
-      <br>
-      <br>
-      <div class="tile">
-        <h5 class="tile-title">Products Menu</h5>
-        <div class="tile-body">
-          <nav class="nav flex-column">
-            <a class="nav-link" href="">Product Detail</a>
-            <a class="nav-link" href="">Product Detail</a>
-          </nav>
-        </div>
-      </div>
+      
+      @include('admin.products.product_menus')
     </div>
     <div class="col-md-8">
-        <br>
-        <br>
+        
         @include('admin.partials.flash', ['$errors' => $errors])
         
         <div class="tile">
@@ -92,7 +81,7 @@
                
             </div>
             <div class="tile-footer">
-              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="{{url('admin/products')}}"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
             </div>
           </div>
           {!! Form::close() !!}
