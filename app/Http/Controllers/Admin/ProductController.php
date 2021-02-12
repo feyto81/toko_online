@@ -118,4 +118,13 @@ class ProductController extends Controller
         $this->data['productImages'] = $product->productImages;
         return view('admin.products.images', $this->data);
     }
+
+    public function add_image($id)
+    {
+        if (empty($id)) {
+            return redirect('admin/products');
+        }
+
+        $product = Product::findOrFail($id);
+    }
 }
