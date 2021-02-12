@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductImageRequest;
 use App\Models\Product;
 use App\Models\Category;
 use Str;
@@ -129,5 +130,38 @@ class ProductController extends Controller
         $this->data['productID'] = $product->id;
         $this->data['product'] = $product;
         return view('admin.products.image_form', $this->data);
+    }
+
+    public function upload_image(ProductImageRequest $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $name = $product->slug . '_' . time();
+            $fileName = $name . '.' . $image->getClientOriginalExtension();
+
+            $folder = ProductImage::UPLOAD_DIR . '/images';
+
+            $filePath = $image->storeAs($folder . '/original', $fileName, 'public');
+
+            $resizedImage = $this->_resizeImage($image, $fileName, $folder);
+
+            $params = array_merge(
+                [
+                    'product_id' => $product->id,
+                    'path' => $filePath,
+                ],
+                $resizedImage
+            );
+
+            if (ProductImage::create($params)) {
+                Session::flash('success', 'Image has been uploaded');
+            } else {
+                Session::flash('error', 'Image could not be uploaded');
+            }
+
+            return redirect('admin/products/' . $id . '/images');
+        }
     }
 }
