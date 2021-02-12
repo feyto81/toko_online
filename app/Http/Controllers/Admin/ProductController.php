@@ -164,4 +164,15 @@ class ProductController extends Controller
             return redirect('admin/products/' . $id . '/images');
         }
     }
+
+    public function remove_image($id)
+    {
+        $image = ProductImage::findOrFail($id);
+
+        if ($image->delete()) {
+            Session::flash('success', 'Image has been deleted');
+        }
+
+        return redirect('admin/products/' . $image->product->id . '/images');
+    }
 }
