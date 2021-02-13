@@ -40,11 +40,14 @@
                                 <td>{{$attribute->name}}</td>
                                 <td>{{$attribute->type}}</td>
                                 <td>
-                                  {{-- <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
-                                  {!! Form::open(['url' => 'admin/categories/'.$category->id, 'class' => 'delete','display:inline-block']) !!}
+                                  <a href="{{url('admin/attributes/'.$attribute->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
+                                  @if ($attribute->type == 'select')
+                                      <a href="{{url('admin/attributes/'.$attribute->id.'/options')}}"></a>
+                                  @endif
+                                  {!! Form::open(['url' => 'admin/attributes/'.$attribute->id, 'class' => 'delete','display:inline-block']) !!}
                                   {!! Form::hidden('_method','DELETE') !!}
                                   {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
-                                  {!! Form::close() !!} --}}
+                                  {!! Form::close() !!}
                                 </td>
                             </tr>
                         @empty
