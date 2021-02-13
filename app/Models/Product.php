@@ -48,6 +48,11 @@ class Product extends Model
         return $this->belongsTo('App\Models\Product', 'parent_id');
     }
 
+    public function productAttributeValues()
+    {
+        return $this->hasMany('App\Models\ProductAttributeValue', 'parent_product_id');
+    }
+
     public function productImages()
     {
         return $this->hasMany('App\Models\ProductImage');
