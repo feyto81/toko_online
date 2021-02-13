@@ -41,7 +41,7 @@
                                 <td>
                                   <a href="{{url('admin/attributes/'.$attribute->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
                                   @if ($attribute->type == 'select')
-                                      <a href="{{url('admin/attributes/'.$attribute->id.'/options')}}"></a>
+                                      <a href="{{url('admin/attributes/'.$attribute->id.'/options')}}" class="btn btn-primary btn-sm">Options</a>
                                   @endif
                                   {!! Form::open(['url' => 'admin/attributes/'.$attribute->id, 'class' => 'delete','display:inline-block']) !!}
                                   {!! Form::hidden('_method','DELETE') !!}
