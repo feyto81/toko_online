@@ -16,14 +16,16 @@
 </div>
 <div class="row">
     <div class="col-md-5">
-
+        @include('admin.attributes.option_form')
     </div>
     <div class="col-md-7">
     
         
         
         <div class="tile">
-            
+            <div class="tile-title">
+                <h3 class="tile-title">Options for : {{ $attribute->name }}</h3>
+            </div>
             <div class="tile-body">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered" id="">
@@ -40,16 +42,11 @@
                                 <td>{{ $option->id }}</td>
                                 <td>{{ $option->name }}</td>
                                 <td>
-                                    @can('edit_attributes')
-                                        <a href="{{ url('admin/attributes/options/'. $option->id .'/edit') }}" class="btn btn-warning btn-sm">edit</a>
-                                    @endcan
-
-                                    @can('delete_attributes')
-                                        {!! Form::open(['url' => 'admin/attributes/options/'. $option->id, 'class' => 'delete', 'style' => 'display:inline-block']) !!}
-                                        {!! Form::hidden('_method', 'DELETE') !!}
-                                        {!! Form::submit('remove', ['class' => 'btn btn-danger btn-sm']) !!}
-                                        {!! Form::close() !!}
-                                    @endcan
+                                    <a href="{{ url('admin/attributes/options/'. $option->id .'/edit') }}" class="btn btn-warning btn-sm">edit</a>
+                                    {!! Form::open(['url' => 'admin/attributes/options/'. $option->id, 'class' => 'delete', 'style' => 'display:inline-block']) !!}
+                                    {!! Form::hidden('_method', 'DELETE') !!}
+                                    {!! Form::submit('remove', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @empty
