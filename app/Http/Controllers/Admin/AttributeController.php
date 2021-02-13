@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Attribute;
+use App\Models\AttributeOption;
 
 class AttributeController extends Controller
 {
@@ -14,7 +16,8 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        //
+        $this->data['attributes'] = Attribute::orderBy('name', 'ASC')->paginate(10);
+        return view('admin.attributes.index', $this->data);
     }
 
     /**
