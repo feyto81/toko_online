@@ -14,9 +14,8 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-    <a href="{{url('admin/categories/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Category</a>
-        <br>
-        <br>
+    
+        
         @include('admin.partials.flash', ['$errors' => $errors])
         <div class="tile">
           <div class="tile-body">
@@ -57,10 +56,13 @@
                         @endforelse
                     </tbody>
                 </table>
+                <a href="{{url('admin/attributes/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add New</a>
             </div>
+            
           </div>
           
         </div>
+        
     </div>
 </div>
 
