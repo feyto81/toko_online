@@ -14,7 +14,11 @@ class AlterAsNullableColumnInProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->decimal('price', 15, 2)->nullable()->change();
+            $table->decimal('weight', 15, 2)->nullable()->change();
+            $table->text('short_description')->nullable()->change();
+            $table->text('description')->nullable()->change();
+            $table->integer('status')->nullable()->change();
         });
     }
 
@@ -26,7 +30,11 @@ class AlterAsNullableColumnInProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->decimal('price', 15, 2)->nullable(false)->change();
+            $table->decimal('weight', 15, 2)->nullable(false)->change();
+            $table->text('short_description')->nullable(false)->change();
+            $table->text('description')->nullable(false)->change();
+            $table->integer('status')->nulllable(false)->change();
         });
     }
 }
