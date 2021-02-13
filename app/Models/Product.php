@@ -66,4 +66,12 @@ class Product extends Model
             2 => 'inactive',
         ];
     }
+
+    public static function types()
+    {
+        return [
+            'simple' => 'Simple',
+            'configurable' => 'Configurable',
+        ];
+    }
 }
