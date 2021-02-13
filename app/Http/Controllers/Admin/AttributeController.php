@@ -144,4 +144,22 @@ class AttributeController extends Controller
 
         return view('admin.attributes.options', $this->data);
     }
+
+    public function store_option(AttributeOptionRequest $request, $attributeID)
+    {
+        if (empty($attributeID)) {
+            return redirect('admin/attributes');
+        }
+
+        $params = [
+            'attribute_id' => $attributeID,
+            'name' => $request->get('name'),
+        ];
+
+        if (AttributeOption::create($params)) {
+            Session::flash('success', 'option has been saved');
+        }
+
+        return redirect('admin/attributes/' . $attributeID . '/options');
+    }
 }
