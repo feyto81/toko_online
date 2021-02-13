@@ -82,7 +82,11 @@ class AttributeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $attribute = Attribute::findOrFail($id);
+
+        $this->data['attribute'] = $attribute;
+
+        return view('admin.attributes.form', $this->data);
     }
 
     /**
