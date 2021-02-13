@@ -31,13 +31,60 @@
               @else
                 {!! Form::open(['url'   => 'admin/attributes']) !!}
               @endif
-              <div class="form-group">
-                {!! Form::label('name','Name') !!}
-                {!! Form::text('name', null, ['class' => 'form-control','placeholder' => 'category name']) !!}
-              </div>
-              <div class="form-group">
-                
-              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <legend class="col-form-label pt-0">General</legend>
+                        <div class="form-group">
+                            {!! Form::label('code', 'Code') !!}
+                            {!! Form::text('code', null, ['class' => 'form-control', 'readonly' => $disableInput]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('name', 'Name') !!}
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                                {!! Form::label('type', 'Type') !!}
+                                {!! Form::select('type', $types , null, ['class' => 'form-control', 'placeholder' => '-- Set Type --', 'readonly' => $disableInput]) !!}
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <legend class="col-form-label pt-0">Validation</legend>
+                        <div class="form-group">
+                                {!! Form::label('is_required', 'Is Required?') !!}
+                                {!! Form::select('is_required', $booleanOptions , null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        </div>
+                        <div class="form-group">
+                                {!! Form::label('is_unique', 'Is Unique?') !!}
+                                {!! Form::select('is_unique', $booleanOptions , null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        </div>
+                        <div class="form-group">
+                                {!! Form::label('validation', 'Validation') !!}
+                                {!! Form::select('validation', $validations , null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <legend class="col-form-label pt-0">Configuration</legend>
+                        <div class="form-group">
+                                {!! Form::label('is_configurable', 'Use in Configurable Product?') !!}
+                                {!! Form::select('is_configurable', $booleanOptions , null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        </div>
+                        <div class="form-group">
+                                {!! Form::label('is_filterable', 'Use in Filtering Product?') !!}
+                                {!! Form::select('is_filterable', $booleanOptions , null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             </div>
             <div class="tile-footer">
               <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
