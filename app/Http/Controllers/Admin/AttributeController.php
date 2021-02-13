@@ -124,6 +124,12 @@ class AttributeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $attribute = Attribute::findOrFail($id);
+
+        if ($attribute->delete()) {
+            Session::flash('success', 'Attribute has been deleted');
+        }
+
+        return redirect('admin/attributes');
     }
 }
