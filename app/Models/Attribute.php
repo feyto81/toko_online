@@ -29,4 +29,27 @@ class Attribute extends Model
             'date' => 'Date',
         ];
     }
+
+    public static function booleanOptions()
+    {
+        return [
+            1 => 'Yes',
+            0 => 'No',
+        ];
+    }
+
+    public static function validations()
+    {
+        return [
+            'number' => 'Number',
+            'decimal' => 'Decimal',
+            'email' => 'Email',
+            'url' => 'URL',
+        ];
+    }
+
+    public function attributeOptions()
+    {
+        return $this->hasMany('App\Models\AttributeOption');
+    }
 }
