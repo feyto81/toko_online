@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
+        'parent_id',
         'user_id',
         'sku',
+        'type',
         'name',
         'slug',
         'price',
@@ -24,6 +26,11 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function productInventory()
+    {
+        return $this->hasOne('App\Models\ProductInventory');
     }
 
     public function categories()
