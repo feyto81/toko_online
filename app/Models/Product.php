@@ -43,6 +43,11 @@ class Product extends Model
         return $this->hasMany('App\Models\Product', 'parent_id')->orderBy('price', 'ASC');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Product', 'parent_id');
+    }
+
     public function productImages()
     {
         return $this->hasMany('App\Models\ProductImage');
