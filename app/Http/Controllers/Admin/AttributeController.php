@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\AttributeRequest;
+use App\Http\Requests\AttributeOptionRequest;
+
 use App\Models\Attribute;
 use App\Models\AttributeOption;
+
 use Session;
 
 class AttributeController extends Controller

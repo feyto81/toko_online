@@ -13,7 +13,7 @@ class AttributeOptionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class AttributeOptionRequest extends FormRequest
      */
     public function rules()
     {
+        $attributeID = (int) $this->get('attribute_id');
+        $id = (int) $this->get('id');
+
+        if ($this->method() == 'PUT') {
+            $name = 'required|unique:attribute_options,name,' . $id . ',id,attribute_id,' . $attributeID;
+        } else {
+            $name = 'required|unique:attribute_options,name,NULL,id,attribute_id,' . $attributeID;
+        }
+
         return [
-            //
+            'name' => $name,
         ];
     }
 }
