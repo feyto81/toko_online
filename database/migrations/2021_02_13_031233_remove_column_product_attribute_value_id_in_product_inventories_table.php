@@ -14,7 +14,8 @@ class RemoveColumnProductAttributeValueIdInProductInventoriesTable extends Migra
     public function up()
     {
         Schema::table('product_inventories', function (Blueprint $table) {
-            //
+            $table->dropForeign(['product_attribute_value_id']);
+            $table->dropColumn('product_attribute_value_id');
         });
     }
 
@@ -26,7 +27,7 @@ class RemoveColumnProductAttributeValueIdInProductInventoriesTable extends Migra
     public function down()
     {
         Schema::table('product_inventories', function (Blueprint $table) {
-            //
+            $table->foreign('product_attribute_value_id')->references('id')->on('product_attribute_values')->onDelete('cascade');
         });
     }
 }
