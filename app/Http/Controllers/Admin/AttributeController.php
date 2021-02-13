@@ -132,4 +132,16 @@ class AttributeController extends Controller
 
         return redirect('admin/attributes');
     }
+
+    public function options($attributeID)
+    {
+        if (empty($attributeID)) {
+            return redirect('admin/attributes');
+        }
+
+        $attribute = Attribute::findOrFail($attributeID);
+        $this->data['attribute'] = $attribute;
+
+        return view('admin.attributes.options', $this->data);
+    }
 }
