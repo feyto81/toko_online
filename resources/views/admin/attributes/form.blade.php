@@ -87,7 +87,7 @@
             </fieldset>
             </div>
             <div class="tile-footer">
-              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="{{url('admin/attributes')}}"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
             </div>
           </div>
           {!! Form::close() !!}
