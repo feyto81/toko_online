@@ -9,6 +9,13 @@ use App\Models\AttributeOption;
 
 class AttributeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->data['types'] = Attribute::types();
+        $this->data['booleanOptions'] = Attribute::booleanOptions();
+        $this->data['validations'] = Attribute::validations();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +34,8 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['attribute'] = null;
+        return view('admin.attributes.form', $this->data);
     }
 
     /**
