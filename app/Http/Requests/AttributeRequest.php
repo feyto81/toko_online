@@ -13,7 +13,7 @@ class AttributeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class AttributeRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PUT') {
+            $code = 'required|unique:attributes,code,' . $this->get('id');
+            $name = 'required|unique:attributes,name,' . $this->get('id');
+        } else {
+            $code = 'required|unique:attributes,code';
+            $name = 'required|unique:attributes,name';
+        }
+
         return [
-            //
+            'code' => $code,
+            'name' => $name,
+            'type' => 'required',
         ];
     }
 }
