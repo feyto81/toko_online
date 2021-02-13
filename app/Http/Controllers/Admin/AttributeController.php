@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
 use App\Models\AttributeOption;
+use Session;
 
 class AttributeController extends Controller
 {
@@ -44,9 +45,19 @@ class AttributeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AttributeRequest $request)
     {
-        //
+        $params = $request->except('_token');
+        $params['is_required'] = (bool) $params['is_required'];
+        $params['is_unique'] = (bool) $params['is_unique'];
+        $params['is_configurable'] = (bool) $params['is_configurable'];
+        $params['is_filterable'] = (bool) $params['is_filterable'];
+
+        if (Attribute::create($params)) {
+            Session::flash('success', 'Attribute has been saved');
+        }
+
+        return redirect('admin/attributes');
     }
 
     /**
