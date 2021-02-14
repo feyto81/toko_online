@@ -35,6 +35,7 @@
                           </tr>
                     </thead>
                     <tbody>
+                      
                         @forelse($products as $product)
                             <tr>
                                 <td>{{$product->id}}</td>
