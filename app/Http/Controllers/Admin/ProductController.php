@@ -228,6 +228,21 @@ class ProductController extends Controller
         return redirect('admin/products');
     }
 
+    private function _updateProductVariants($params)
+    {
+        if ($params['variants']) {
+            foreach ($params['variants'] as $productParams) {
+                $product = Product::find($productParams['id']);
+                $product->update($productParams);
+
+                $product->status = $params['status'];
+                $product->save();
+
+                ProductInventory::updateOrCreate(['product_id' => $product->id], ['qty' => $productParams['qty']]);
+            }
+        }
+    }
+
     public function destroy($id)
     {
         $product  = Product::findOrFail($id);
