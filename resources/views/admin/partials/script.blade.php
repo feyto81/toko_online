@@ -20,4 +20,20 @@
   $(".delete").on("submit", function () {
     return confirm("Do you want to remove this?");
   });
+  function showHideConfigurableAttributes() {
+			var productType = $(".product-type").val();
+				
+			if (productType == 'configurable') {
+				$(".configurable-attributes").show();
+			} else {
+				$(".configurable-attributes").hide();
+			}
+		}
+
+		$(function(){
+			showHideConfigurableAttributes();
+			$(".product-type").change(function() {
+				showHideConfigurableAttributes();
+			});
+		});
 </script>
