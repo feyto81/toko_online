@@ -113,6 +113,22 @@ class ProductController extends Controller
         }
     }
 
+    private function _saveProductAttributeValues($product, $variant, $parentProductID)
+    {
+        foreach (array_values($variant) as $attributeOptionID) {
+            $attributeOption = AttributeOption::find($attributeOptionID);
+
+            $attributeValueParams = [
+                'parent_product_id' => $parentProductID,
+                'product_id' => $product->id,
+                'attribute_id' => $attributeOption->attribute_id,
+                'text_value' => $attributeOption->name,
+            ];
+
+            ProductAttributeValue::create($attributeValueParams);
+        }
+    }
+
     public function store(ProductRequest $request)
     {
         $params = $request->except('_token');
