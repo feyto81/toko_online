@@ -197,12 +197,27 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $saved = false;
-        $saved = DB::transaction(function () use ($product, $params) {
-            $product->update($params);
-            $product->categories()->sync($params['category_ids']);
+        // $saved = DB::transaction(function () use ($product, $params) {
+        //     $product->update($params);
+        //     $product->categories()->sync($params['category_ids']);
 
-            return true;
-        });
+        //     return true;
+        // });
+        $saved = DB::transaction(
+            function () use ($product, $params) {
+                $categoryIds = !empty($params['category_ids']) ? $params['category_ids'] : [];
+                $product->update($params);
+                $product->categories()->sync($categoryIds);
+
+                if ($product->type == 'configurable') {
+                    $this->_updateProductVariants($params);
+                } else {
+                    ProductInventory::updateOrCreate(['product_id' => $product->id], ['qty' => $params['qty']]);
+                }
+
+                return true;
+            }
+        );
 
         if ($saved) {
             Session::flash('success', 'Product has been saved');
