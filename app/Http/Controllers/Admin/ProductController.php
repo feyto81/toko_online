@@ -179,6 +179,7 @@ class ProductController extends Controller
             return redirect('admin/products/create');
         }
         $product = Product::findOrFail($id);
+        $product->qty = isset($product->productInventory) ? $product->productInventory->qty : null;
         $categories = Category::orderBy('name', 'ASC')->get();
 
         $this->data['categories'] = $categories->toArray();
