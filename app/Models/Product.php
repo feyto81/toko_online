@@ -67,6 +67,13 @@ class Product extends Model
         ];
     }
 
+    public function statusLabel()
+    {
+        $statuses = $this->statuses();
+
+        return isset($this->status) ? $statuses[$this->status] : null;
+    }
+
     public static function types()
     {
         return [

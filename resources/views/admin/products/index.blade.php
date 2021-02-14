@@ -26,6 +26,7 @@
                         <tr>
                             <th>#</th>
                             <th>Sku</th>
+                            <th>Type</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -38,9 +39,10 @@
                             <tr>
                                 <td>{{$product->id}}</td>
                                 <td>{{$product->sku}}</td>
+                                <td>{{ $product->type }}</td>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->price}}</td>
-                                <td>{{$product->status}}</td>
+                                <td>{{number_format($product->price)}}</td>
+                                <td>{{ $product->statusLabel() }}</td>
                                
                                 <td>
                                   <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
