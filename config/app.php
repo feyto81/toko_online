@@ -176,6 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\GeneralServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 
