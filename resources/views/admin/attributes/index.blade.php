@@ -39,14 +39,20 @@
                                 <td>{{$attribute->name}}</td>
                                 <td>{{$attribute->type}}</td>
                                 <td>
+                                  @can('edit_attributes')
                                   <a href="{{url('admin/attributes/'.$attribute->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
+                                  @endif
+                                  @can('add_attributes')
                                   @if ($attribute->type == 'select')
                                       <a href="{{url('admin/attributes/'.$attribute->id.'/options')}}" class="btn btn-primary btn-sm">Options</a>
                                   @endif
-                                  {!! Form::open(['url' => 'admin/attributes/'.$attribute->id, 'class' => 'delete','display:inline-block']) !!}
-                                  {!! Form::hidden('_method','DELETE') !!}
-                                  {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
-                                  {!! Form::close() !!}
+                                  @endcan
+                                  @can('delete_attributes')
+                                    {!! Form::open(['url' => 'admin/attributes/'.$attribute->id, 'class' => 'delete','display:inline-block']) !!}
+                                    {!! Form::hidden('_method','DELETE') !!}
+                                    {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
+                                    {!! Form::close() !!}
+                                  @endcan
                                 </td>
                             </tr>
                         @empty
@@ -56,8 +62,10 @@
                         @endforelse
                     </tbody>
                 </table>
+                @can('add_attributes')
                 <a href="{{url('admin/attributes/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add New</a>
-            </div>
+                @endcan
+              </div>
             
           </div>
           
