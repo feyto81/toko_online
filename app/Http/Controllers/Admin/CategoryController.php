@@ -7,9 +7,11 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Session;
 use Str;
+use App\Authorizable;
 
 class CategoryController extends Controller
 {
+    use Authorizable;
     public function index()
     {
         $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(3);

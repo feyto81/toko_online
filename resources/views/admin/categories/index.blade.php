@@ -14,7 +14,9 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-    <a href="{{url('admin/categories/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Category</a>
+      @can('add_categories')
+        <a href="{{url('admin/categories/create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>Add Category</a>
+        @endcan
         <br>
         <br>
         @include('admin.partials.flash', ['$errors' => $errors])
@@ -40,11 +42,16 @@
                                 <td>{{$category->slug}}</td>
                                 <td>{{$category->parent ? $category->parent->name : ''}}</td>
                                 <td>
+                                  @can('edit_categories')
                                   <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
-                                  {!! Form::open(['url' => 'admin/categories/'.$category->id, 'class' => 'delete','display:inline-block']) !!}
-                                  {!! Form::hidden('_method','DELETE') !!}
-                                  {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
-                                  {!! Form::close() !!}
+                                  @endcan
+                                  @can('delete_categories')
+                                    {!! Form::open(['url' => 'admin/categories/'.$category->id, 'class' => 'delete','display:inline-block']) !!}
+                                    {!! Form::hidden('_method','DELETE') !!}
+                                    {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
+                                    {!! Form::close() !!}
+                                    
+                                  @endcan
                                 </td>
                             </tr>
                         @empty
