@@ -50,10 +50,13 @@
                                
                                 <td>
                                   <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-warning btn-sm">edit</a>
+                                  @can('delete_products')
+                                    
                                   {!! Form::open(['url' => 'admin/products/'.$product->id, 'class' => 'delete','display:inline-block']) !!}
                                   {!! Form::hidden('_method','DELETE') !!}
                                   {!! Form::submit('remove', ['class' => 'btn btn-sm btn-danger']) !!}
                                   {!! Form::close() !!}
+                                  @endcan
                                 </td>
                             </tr>
                         @empty
