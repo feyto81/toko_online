@@ -2,22 +2,32 @@
 
 namespace App\Helpers;
 
+
+
 class General
 {
-    // helpers selectmultilevel
+    /**
+     * Generate multilevel select input
+     *
+     * @param string $name    name
+     * @param array  $array   array data
+     * @param array  $options additional option
+     *
+     * @return string
+     */
     public static function selectMultiLevel($name, $array = [], $options = [])
     {
         $class_form = "";
-        if (!empty($options['class'])) {
+        if (isset($options['class'])) {
             $class_form = $options['class'];
         }
 
         $selected = [];
-        if (!empty($options['selected'])) {
+        if (isset($options['selected'])) {
             $selected = is_array($options['selected']) ? $options['selected'] : [$options['selected']];
         }
 
-        if (!empty($options['placeholder'])) {
+        if (isset($options['placeholder'])) {
             $placeholder = [
                 'id' => '',
                 'name' => $options['placeholder'],
@@ -27,7 +37,7 @@ class General
         }
 
         $multiple = '';
-        if (!empty($options['multiple'])) {
+        if (isset($options['multiple'])) {
             $multiple = 'multiple';
         }
 
@@ -38,16 +48,18 @@ class General
         return $select;
     }
 
-    public static function getMultiLevelOptions($array, $parent_id = 0, $parents = [], $selected = [], $placeholder = null)
+    /**
+     * Generate multilevel options for select input
+     *
+     * @param array $array     options
+     * @param int   $parent_id parent id
+     * @param array $parents   parents option
+     * @param array $selected  selected options
+     *
+     * @return string
+     */
+    public static function getMultiLevelOptions($array, $parent_id = 0, $parents = [], $selected = [])
     {
-        if ($placeholder != null) {
-            $placeholder_item = [
-                'id' => 0,
-                'name' => $placeholder
-            ];
-            $array[] = $placeholder;
-        }
-
         static $i = 0;
         if ($parent_id == 0) {
             foreach ($array as $element) {
@@ -78,5 +90,82 @@ class General
 
         $i--;
         return $menu_html;
+    }
+
+    /**
+     * Convert number to roman
+     *
+     * @param int $integer name
+     *
+     * @return string
+     */
+    public static function integerToRoman($integer)
+    {
+        $integer = intval($integer);
+        $result = '';
+
+        // Create a lookup array that contains all of the Roman numerals.
+        $lookup = ['M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1];
+
+        foreach ($lookup as $roman => $value) {
+            $matches = intval($integer / $value);
+            $result .= str_repeat($roman, $matches);
+            $integer = $integer % $value;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Apply price format to number
+     *
+     * @param double $number   number
+     * @param string $currency format
+     *
+     * @return string
+     */
+    public static function priceFormat($number, $currency = '')
+    {
+        $currency = !empty($currency) ? $currency . ' ' : '';
+        return $currency . number_format($number, 0, ",", ".");
+    }
+
+    /**
+     * Apply date format to datetime
+     *
+     * @param string $datetime datetime
+     * @param string $format   format
+     *
+     * @return string
+     */
+    public static function datetimeFormat($datetime, $format = 'd M Y H:i:s')
+    {
+        if (!empty($datetime)) {
+            return date($format, strtotime($datetime));
+        } else {
+            return '';
+        }
+    }
+
+    /**
+     * Show attributes json as ul tag
+     *
+     * @param string $jsonAttributes json attributes
+     *
+     * @return string
+     */
+    public static function showAttributes($jsonAttributes)
+    {
+        $attributes = json_decode($jsonAttributes, true);
+        $showAttributes = '';
+        if ($attributes) {
+            $showAttributes .= '<ul class="item-attributes">';
+            foreach ($attributes as $key => $attribute) {
+                $showAttributes .= '<li>' . ucwords($key) . ': <span>' . $attribute . '</span><li>';
+            }
+            $showAttributes .= '</ul>';
+        }
+
+        return $showAttributes;
     }
 }

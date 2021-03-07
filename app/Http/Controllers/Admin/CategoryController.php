@@ -12,6 +12,9 @@ use App\Authorizable;
 class CategoryController extends Controller
 {
     use Authorizable;
+
+
+
     public function index()
     {
         $this->data['categories'] = Category::orderBy('name', 'ASC')->paginate(3);
