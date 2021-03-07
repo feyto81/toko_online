@@ -27,6 +27,7 @@ class RemoveColumnProductAttributeValueIdInProductInventoriesTable extends Migra
     public function down()
     {
         Schema::table('product_inventories', function (Blueprint $table) {
+            $table->unsignedBigInteger('product_attribute_value_id');
             $table->foreign('product_attribute_value_id')->references('id')->on('product_attribute_values')->onDelete('cascade');
         });
     }

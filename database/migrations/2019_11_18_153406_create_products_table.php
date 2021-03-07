@@ -21,13 +21,15 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->decimal('price', 15, 2);
             $table->decimal('weight', 10, 2);
+            $table->decimal('width', 10, 2);
             $table->decimal('height', 10, 2);
             $table->decimal('depth', 10, 2);
             $table->text('short_description');
             $table->text('description');
             $table->integer('status');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

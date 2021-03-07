@@ -19,6 +19,7 @@ class CreateProductInventoriesTable extends Migration
             $table->unsignedBigInteger('product_attribute_value_id');
             $table->integer('qty');
             $table->timestamps();
+
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('product_attribute_value_id')->references('id')->on('product_attribute_values')->onDelete('cascade');
         });

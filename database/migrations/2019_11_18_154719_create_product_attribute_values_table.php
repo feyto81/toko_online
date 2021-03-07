@@ -25,6 +25,7 @@ class CreateProductAttributeValuesTable extends Migration
             $table->date('date_value')->nullable();
             $table->text('json_value')->nullable();
             $table->timestamps();
+
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
         });

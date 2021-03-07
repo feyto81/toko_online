@@ -30,7 +30,7 @@ class AddColumnsToAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::table('attribute', function (Blueprint $table) {
+        Schema::table('attributes', function (Blueprint $table) {
             $table->dropColumn('type');
             $table->dropColumn('validation');
             $table->dropColumn('is_required');

@@ -18,6 +18,7 @@ class CreateAttributeOptionsTable extends Migration
             $table->unsignedBigInteger('attribute_id');
             $table->string('name');
             $table->timestamps();
+
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
         });
     }
