@@ -44,7 +44,8 @@ class CategoryController extends Controller
         // $this->data['category'] = $category;
         // return view('admin.categories.form', $this->data);
         $category = Category::findOrFail($id);
-        $this->data['categories'] = Category::orderBy('name', 'asc')->get();
+        $categories = Category::where('id', '!=', $id)->orderBy('name', 'asc')->get();
+        $this->data['categories'] = $categories->toArray();
         $this->data['category'] = $category;
         $this->data['title'] = 'Edit Category';
         return view('admin.categories.form', $this->data);
