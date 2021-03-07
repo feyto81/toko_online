@@ -20,6 +20,8 @@ trait Authorizable
         'edit_option' => 'edit',
         'update_option' => 'edit',
         'remove_option' => 'edit',
+
+
     ];
 
     /**
