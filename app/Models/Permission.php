@@ -28,6 +28,16 @@ class Permission extends \Spatie\Permission\Models\Permission
             'add_orders',
             'edit_orders',
             'delete_orders',
+
+            'view_categories',
+            'add_categories',
+            'edit_categories',
+            'delete_categories',
+
+            'view_attributes',
+            'add_attributes',
+            'edit_attributes',
+            'delete_attributes',
         ];
     }
 }
