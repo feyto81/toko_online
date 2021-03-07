@@ -46,10 +46,10 @@
                 {!! Form::label('name', 'Name') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'name']) !!}
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 {!! Form::label('price', 'Price') !!}
                 {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'price']) !!}
-              </div>
+              </div> --}}
               <div class="form-group">
                 {!! Form::label('category_ids', 'Category') !!}
                 {!! General::selectMultiLevel('category_ids[]', $categories, ['class' => 'form-control', 'multiple' => true, 'selected' => !empty(old('category_ids')) ? old('category_ids') : $categoryIDs, 'placeholder' => '-- Choose Category --']) !!}
@@ -80,7 +80,7 @@
                   {!! Form::label('description', 'Description') !!}
                   {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'description']) !!}
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                   {!! Form::label('weight', 'Weight') !!}
                   {!! Form::text('weight', null, ['class' => 'form-control', 'placeholder' => 'weight']) !!}
               </div>
@@ -95,7 +95,7 @@
               <div class="form-group">
                   {!! Form::label('height', 'Height') !!}
                   {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'height']) !!}
-              </div>
+              </div> --}}
               <div class="form-group">
                   {!! Form::label('status', 'Status') !!}
                   {!! Form::select('status', $statuses , null, ['class' => 'form-control', 'placeholder' => '-- Set Status --']) !!}
