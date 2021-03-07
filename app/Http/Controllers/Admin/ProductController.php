@@ -17,9 +17,12 @@ use Str;
 use Auth;
 use DB;
 use Session;
+use App\Authorizable;
 
 class ProductController extends Controller
 {
+    use Authorizable;
+
     public function __construct()
     {
         $this->data['statuses'] = Product::statuses();
