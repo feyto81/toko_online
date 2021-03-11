@@ -33,6 +33,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::delete('attributes/options/{optionID}', 'AttributeController@remove_option')->name('attributes.remove_option');
     Route::get('attributes/options/{optionID}/edit', 'AttributeController@edit_option')->name('attributes.edit_option');
     Route::put('attributes/options/{optionID}', 'AttributeController@update_option')->name('attributes.update_option');
+
+    Route::resource('roles', 'RoleController');
+    Route::resource('users', 'UserController');
 });
 
 Auth::routes();
