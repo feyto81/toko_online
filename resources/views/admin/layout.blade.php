@@ -21,6 +21,12 @@
             <li><a class="treeview-item" href="{{url('admin/attributes')}}"><i class="icon fa fa-circle-o"></i> Attributes</a></li>
           </ul>
         </li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Users &amp; Roles</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{{ url('admin/users')}}"><i class="icon fa fa-circle-o"></i> Users</a></li>
+            <li><a class="treeview-item" href="{{ url('admin/roles')}}"><i class="icon fa fa-circle-o"></i> Roles</a></li>
+          </ul>
+        </li>
 
       </ul>
     </aside>
