@@ -11,10 +11,12 @@ use Session;
 
 class RoleController extends Controller
 {
+    use Authorizable;
+
     public function index()
     {
-        $roles = Role::all();
-        $permissions = Permission::all();
-        dd($permissions);
+        $data['roles'] = Role::all();
+        $data['permissions'] = Permission::all();
+        return view('admin.roles.index', $data);
     }
 }
